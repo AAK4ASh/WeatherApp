@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 //interface representation of weather info api
 interface WeatherAPI {
-    @GET("current.json")//specifies api end point and api method
+    @GET(APIEndpoints.ENDPOINT_CURRENT)//specifies api end point and api method
     fun getWeatherInfo(
         @Query("key") apiKey: String,//specifies url parameters
         @Query("q") location: String,

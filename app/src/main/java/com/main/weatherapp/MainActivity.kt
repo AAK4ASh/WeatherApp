@@ -44,12 +44,13 @@ package com.main.weatherapp
                     }
                 })
         }
+
         private fun updateUI(responseBody:ApiResponse?){
             responseBody?.let { response ->
                 binding.apply {
                     temp.text= "${response.current.temp_c}°C"
                     location.text= response.location.name
-                    condition.text= response.current.condition.text
+                   // condition.text= response.current.condition.text
                     time.text=response.location.localtime
                 }
             }
