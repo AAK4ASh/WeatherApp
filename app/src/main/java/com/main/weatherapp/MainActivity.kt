@@ -1,5 +1,6 @@
 package com.main.weatherapp
 
+    import android.annotation.SuppressLint
     import android.os.Bundle
     import android.view.View
     import android.view.Window
@@ -45,12 +46,13 @@ package com.main.weatherapp
                 })
         }
 
+        @SuppressLint("SetTextI18n")
         private fun updateUI(responseBody:ApiResponse?){
             responseBody?.let { response ->
                 binding.apply {
                     temp.text= "${response.current.temp_c}°C"
                     location.text= response.location.name
-                   // condition.text= response.current.condition.text
+                    condition.text= response.current.condition.text
                     time.text=response.location.localtime
                 }
             }
