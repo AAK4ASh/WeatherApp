@@ -1,6 +1,4 @@
 package com.main.weatherapp
-
-    import android.annotation.SuppressLint
     import android.os.Bundle
     import android.view.View
     import android.view.Window
@@ -13,8 +11,9 @@ package com.main.weatherapp
     import retrofit2.Call
     import retrofit2.Callback
     import retrofit2.Response
+    import java.io.IOException
 
-    class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
         private lateinit var binding: ActivityMainBinding
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -41,12 +40,23 @@ package com.main.weatherapp
                     }
 
                     override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
-
+                        //binding.location.text="error occured"
+                        if (t is IOException) {
+                            // Network error occurred
+                            // You can display an error message to the user or perform other error handling actions
+                            println("Network error occurred: ${t.message}")
+                        } else {
+                            // Other types of errors occurred (e.g., server error, parsing error)
+                            // You can display an error message to the user or perform other error handling actions
+                            println("Error occurred: ${t.message}")
+                        }
                     }
                 })
+            //http://api.weatherapi.com/v1/current.json?key=790b7e76ea8049bd98e91426231503&q=Trivandrum&aqi=yes
+            //https://api.weatherapi.com/v1/current.json?key=790b7e76ea8049bd98e91426231503&q=Trivandrum&aqi=yes
         }
 
-        @SuppressLint("SetTextI18n")
+
         private fun updateUI(responseBody:ApiResponse?){
             responseBody?.let { response ->
                 binding.apply {
