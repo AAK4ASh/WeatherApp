@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Weather App</string>
+    <string name="morning">Morning</string>
+    <string name="noon">Noon</string>
+    <string name="eve">Evening</string>
+    <string name="night">Night</string>
 </resources>
